@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3638816 */
+  src: url('iconfont.ttf?t=1662629599271') format('truetype');
+}
+
+@mixin iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-password:before {
+  content: "\e600";
+  @include iconfont
+}
+
+.icon-eye:before {
+  content: "\e78f";
+  @include iconfont
+}
+
+.icon-eye1:before {
+  content: "\e613";
+  @include iconfont
+}
+
+.icon-user:before {
+  content: "\e606";
+  @include iconfont
+}
+

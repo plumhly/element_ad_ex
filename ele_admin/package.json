@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.15.9",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
@@ -19,6 +20,9 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^10.3.1",
+    "svg-sprite-loader": "^6.0.11",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
