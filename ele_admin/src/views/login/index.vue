@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="login-container">
     <div class="content">
-      <p class="title">
+      <h3 class="title">
         Login form
-      </p>
+      </h3>
       <el-form
         ref="form"
         :model="form"
@@ -152,6 +152,8 @@ export default {
       this.$refs["form"].validate((valid) => {
         if (valid) {
           this.loading = true;
+          this.$router.push("/main");
+          this.loading = false;
         } else {
           console.log("error");
           return false;
@@ -213,8 +215,9 @@ export default {
   }
 }
 
-.container {
+.login-container {
   height: 100%;
+  width: 100%;
   background-color: #2d3a4b;
   // display: flex;
   // flex-direction: column;
