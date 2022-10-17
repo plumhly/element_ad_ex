@@ -9,6 +9,8 @@ import VueRouter from 'vue-router'
 import routes from '@/router/index.js'
 import "@/icons"
 
+import store from "@/store/index"
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -21,5 +23,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
