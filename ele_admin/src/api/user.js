@@ -1,8 +1,9 @@
-import request from './api';
+import request from "./api";
 
-export function userLogin(name, pwd) {
-    return request.post("user/login", {
-        username: name,
-        password: pwd,
-    })
+export function userLogin(data) {
+  return request({
+    url: "/vue-element-admin/user/login",
+    method: "post",
+    data,
+  });
 }
