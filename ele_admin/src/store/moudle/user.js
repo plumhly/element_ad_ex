@@ -1,5 +1,5 @@
-import userLogin from "@/api/user"
-import { getToken, setToken, removeToken } from "@/utils/auth.js"
+import userLogin from '@/api/user'
+import { getToken, setToken, removeToken } from '@/utils/auth.js'
 
 const state = {
   token: getToken(),
@@ -21,7 +21,7 @@ const actions = {
       })
         .then((response) => {
           let { data } = response
-          commit("SET_TOKEN", data.token)
+          commit('SET_TOKEN', data.token)
           setToken(data.token)
           resolve()
         })
