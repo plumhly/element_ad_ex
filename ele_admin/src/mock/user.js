@@ -2,7 +2,7 @@
  * @Author: Plum
  * @Date: 2022-10-30 22:43:24
  * @LastEditors: Plum
- * @LastEditTime: 2022-10-30 22:59:09
+ * @LastEditTime: 2022-12-01 19:04:16
  * @Description:
  */
 
@@ -50,6 +50,27 @@ module.exports = [
       return {
         code: 20000,
         data: token,
+      }
+    },
+  },
+
+  // get user info
+  {
+    url: '/vue-element-admin/user/info.*',
+    type: 'get',
+    response: (config) => {
+      const { token } = config.query
+      const info = users[token]
+      if (!info) {
+        return {
+          code: 50000,
+          message: 'Login failed, unable to get user details.',
+        }
+      }
+
+      return {
+        code: 20000,
+        data: info,
       }
     },
   },
