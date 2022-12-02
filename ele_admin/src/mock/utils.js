@@ -2,7 +2,7 @@
  * @Author: Plum
  * @Date: 2022-10-30 22:24:42
  * @LastEditors: Plum
- * @LastEditTime: 2022-11-04 13:02:28
+ * @LastEditTime: 2022-12-02 15:06:22
  * @Description:
  */
 
@@ -17,7 +17,7 @@ function param2Obj(url) {
   const searchArr = search.split('&')
   searchArr.forEach((v) => {
     const index = v.indexOf('=')
-    if (index != -1) {
+    if (index !== -1) {
       const name = v.substring(0, index)
       const val = v.substring(index + 1, v.length)
       obj[name] = val
@@ -28,5 +28,5 @@ function param2Obj(url) {
 }
 
 module.exports = {
-  param2Obj,
+  param2Obj
 }

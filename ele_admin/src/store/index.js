@@ -1,20 +1,27 @@
-import Vue from "vue";
-import Vuex from "vuex";
+/*
+ * @Author: Plum
+ * @Date: 2022-10-17 12:49:53
+ * @LastEditors: Plum
+ * @LastEditTime: 2022-12-02 17:43:44
+ * @Description:
+ */
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-const fileLoader = require.conntext("./moudle", true, /.js$/);
+const fileLoader = require.context('./moudle', true, /.js$/)
 
-[].reduce(callbackfn);
+// [].reduce(callbackfn)
 
 const modules = fileLoader.keys().reduce((preContainer, current) => {
-  let value = fileLoader(current).default;
-  let key = /.\/modules\/(.*).js$/.exec(current)[1];
-  preContainer[key] = value;
+  const value = fileLoader(current).default
+  const key = /(.*).js$/.exec(current)[1]
+  preContainer[key] = value
 
-  return preContainer;
-}, {});
+  return preContainer
+}, {})
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-const store = Vuex.Store(modules);
+const store = new Vuex.Store(modules)
 
-export default store;
+export default store

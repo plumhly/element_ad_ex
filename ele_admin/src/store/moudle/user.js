@@ -2,13 +2,13 @@ import userLogin from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth.js'
 
 const state = {
-  token: getToken(),
+  token: getToken()
 }
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
-  },
+  }
 }
 
 const actions = {
@@ -17,10 +17,10 @@ const actions = {
       const { username, password } = userInfo
       userLogin({
         username: username.trim(),
-        password: password,
+        password: password
       })
         .then((response) => {
-          let { data } = response
+          const { data } = response
           commit('SET_TOKEN', data.token)
           setToken(data.token)
           resolve()
@@ -29,9 +29,9 @@ const actions = {
           reject(error)
         })
     })
-  },
+  }
 }
 
-module.exports = {
-  actions: {},
+export default {
+  actions: {}
 }

@@ -1,26 +1,22 @@
+<!--
+ * @Author: Plum
+ * @Date: 2022-09-29 12:56:31
+ * @LastEditors: Plum
+ * @LastEditTime: 2022-12-02 15:45:54
+-->
 <template>
   <div class="social_container">
-    <div class="social_description">
-      Can not be simulated on local, so please combine you own business
-      simulation! ! !
-    </div>
+    <div class="social_description">Can not be simulated on local, so please combine you own business simulation! ! !</div>
     <div class="social_container">
       <div>
         <span>
-          <svg-icon
-            icon-class="wechat"
-            class-name="icon_size"
-            data-v="3"
-          />
+          <svg-icon icon-class="wechat" class-name="icon_size" data-v="3" />
         </span>
         <span>WeChat</span>
       </div>
       <div>
         <span>
-          <svg-icon
-            icon-class="qq"
-            class-name="icon_size"
-          />
+          <svg-icon icon-class="qq" class-name="icon_size" />
         </span>
         <span>QQ</span>
       </div>
@@ -30,8 +26,8 @@
 
 <script>
 export default {
-  name: "SocialSign",
-};
+  name: 'SocialSign'
+}
 </script>
 
 <style lang="scss" scoped>

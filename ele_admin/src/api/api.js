@@ -1,27 +1,34 @@
-import axios from "axios";
-import { Message, MessageBox } from "element-ui";
+/*
+ * @Author: Plum
+ * @Date: 2022-10-12 12:51:41
+ * @LastEditors: Plum
+ * @LastEditTime: 2022-12-02 17:17:19
+ * @Description:
+ */
+import axios from 'axios'
+// import { Message, MessageBox } from 'element-ui'
 
-let service = axios.create({
+const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
-  timeout: 5000,
-});
+  timeout: 5000
+})
 
 service.interceptors.request.use(
-  function (config) {
-    return config;
+  (config) => {
+    return config
   },
-  function (error) {
-    return Promise.reject(error);
+  (error) => {
+    return Promise.reject(error)
   }
-);
+)
 
 service.interceptors.response.use(
   (response) => {
-    return response;
+    return response
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-);
+)
 
-export default service;
+export default service

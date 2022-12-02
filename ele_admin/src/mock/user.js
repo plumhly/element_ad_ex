@@ -1,18 +1,24 @@
 /*
  * @Author: Plum
+ * @Date: 2022-11-04 12:49:28
+ * @LastEditors: Plum
+ * @LastEditTime: 2022-12-02 17:23:03
+ */
+/*
+ * @Author: Plum
  * @Date: 2022-10-30 22:43:24
  * @LastEditors: Plum
- * @LastEditTime: 2022-12-01 19:04:16
+ * @LastEditTime: 2022-12-02 15:42:24
  * @Description:
  */
 
 const tokens = {
   admin: {
-    token: 'admin-token',
+    token: 'admin-token'
   },
   editor: {
-    token: 'editor-token',
-  },
+    token: 'editor-token'
+  }
 }
 
 const users = {
@@ -20,14 +26,14 @@ const users = {
     roles: ['addmin'],
     introduction: 'I am a super administrator',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Super Admin',
+    name: 'Super Admin'
   },
   'editor-token': {
     roles: ['editor'],
     introduction: 'I am an editor',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Normal Editor',
-  },
+    name: 'Normal Editor'
+  }
 }
 
 module.exports = [
@@ -39,24 +45,24 @@ module.exports = [
       const { username } = config.body
       const token = tokens[username]
 
-      //mock error
+      // mock error
       if (!token) {
         return {
           code: 60204,
-          message: 'Account and password are incorrect.',
+          message: 'Account and password are incorrect.'
         }
       }
 
       return {
         code: 20000,
-        data: token,
+        data: token
       }
-    },
+    }
   },
 
   // get user info
   {
-    url: '/vue-element-admin/user/info.*',
+    url: 'vue-element-admin/user/info\\.*',
     type: 'get',
     response: (config) => {
       const { token } = config.query
@@ -64,14 +70,14 @@ module.exports = [
       if (!info) {
         return {
           code: 50000,
-          message: 'Login failed, unable to get user details.',
+          message: 'Login failed, unable to get user details.'
         }
       }
 
       return {
         code: 20000,
-        data: info,
+        data: info
       }
-    },
-  },
+    }
+  }
 ]

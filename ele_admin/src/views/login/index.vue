@@ -1,14 +1,8 @@
 <template>
   <div class="login-container">
     <div class="content">
-      <h3 class="title">
-        Login form
-      </h3>
-      <el-form
-        ref="form"
-        :model="form"
-        :rules="rules"
-      >
+      <h3 class="title">Login form</h3>
+      <el-form ref="form" :model="form" :rules="rules">
         <el-form-item prop="username">
           <i class="icon-user username_icon" />
           <el-input
@@ -24,13 +18,7 @@
           />
         </el-form-item>
 
-        <el-tooltip
-          v-model="captionOn"
-          effect="dark"
-          content="Caps Lock On"
-          placement="right"
-          manual
-        >
+        <el-tooltip v-model="captionOn" effect="dark" content="Caps Lock On" placement="right" manual>
           <el-form-item prop="password">
             <i class="icon-password password_icon" />
             <el-input
@@ -47,138 +35,119 @@
               @keyup.native="checkCapsLock"
               @keyup.enter="login"
             />
-            <i
-              :class="[showPwd ? 'icon-eye' : 'icon-eye1', 'eye']"
-              @click="showPassword"
-            />
+            <i :class="[showPwd ? 'icon-eye' : 'icon-eye1', 'eye']" @click="showPassword" />
           </el-form-item>
         </el-tooltip>
 
-        <el-button
-          class="login-button"
-          type="primary"
-          @click="login"
-          :loading="loading"
-        >
-          Login
-        </el-button>
+        <el-button class="login-button" type="primary" :loading="loading" @click="login"> Login </el-button>
       </el-form>
       <div class="bottom-container">
         <div class="tips">
           <div>Username: admin Password:any</div>
           <div>Username: editor Password:any</div>
         </div>
-        <el-button
-          type="primary"
-          @click="loginWithOther"
-        >
-          Or connect with
-        </el-button>
+        <el-button type="primary" @click="loginWithOther"> Or connect with </el-button>
       </div>
     </div>
-    <el-dialog
-      title="Or connect with"
-      :visible.sync="dialogVisible"
-      width="50%"
-    >
+    <el-dialog title="Or connect with" :visible.sync="dialogVisible" width="50%">
       <social-sign />
     </el-dialog>
   </div>
 </template>
 
 <script>
-import SocialSign from "./components/SocialSign.vue";
+import SocialSign from './components/SocialSign.vue'
 
 export default {
   components: {
-    SocialSign,
+    SocialSign
   },
   data() {
     const usernameChecker = (rule, value, callback) => {
-      if (typeof value === "undefined" || value === "") {
-        callback(new Error("please input username"));
+      if (typeof value === 'undefined' || value === '') {
+        callback(new Error('please input username'))
       }
 
-      callback();
-    };
+      callback()
+    }
 
     const passwordChecker = (rule, value, callback) => {
-      if (typeof value === "undefined" || value.length < 5) {
-        callback(new Error("password need 5 character"));
+      if (typeof value === 'undefined' || value.length < 5) {
+        callback(new Error('password need 5 character'))
       }
 
-      callback();
-    };
+      callback()
+    }
 
     return {
       form: {
-        username: "",
-        password: "",
+        username: '',
+        password: ''
       },
       rules: {
         username: [
           {
             required: true,
-            trigger: "blur",
-            validator: usernameChecker,
-          },
+            trigger: 'blur',
+            validator: usernameChecker
+          }
         ],
         password: [
           {
             required: true,
-            trigger: "blur",
-            validator: passwordChecker,
-          },
-        ],
+            trigger: 'blur',
+            validator: passwordChecker
+          }
+        ]
       },
       showPwd: false,
-      passwordType: "password",
+      passwordType: 'password',
       captionOn: false,
       dialogVisible: false,
-      loading: false,
-    };
+      loading: false
+    }
   },
 
   mounted() {
-    if (this.form.username === "") {
-      this.$refs.username.focus();
-    } else if (this.form.password === "") {
-      this.$refs.password.focus();
+    if (this.form.username === '') {
+      this.$refs.username.focus()
+    } else if (this.form.password === '') {
+      this.$refs.password.focus()
     }
   },
 
   methods: {
     login() {
-      this.$refs["form"].validate((valid) => {
+      this.$refs['form'].validate((valid) => {
         if (valid) {
-          this.loading = true;
-          this.$router.push("/main");
-          this.loading = false;
+          this.loading = true
+          this.$router.push('/main')
+          this.loading = false
         } else {
-          console.log("error");
-          return false;
+          console.log('error')
+          return false
         }
-      });
+      })
     },
     loginWithOther() {
-      this.dialogVisible = true;
+      this.dialogVisible = true
     },
     showPassword() {
-      this.showPwd = !this.showPwd;
+      this.showPwd = !this.showPwd
       if (this.showPwd) {
-        this.passwordType = "text";
+        this.passwordType = 'text'
       } else {
-        this.passwordType = "password";
+        this.passwordType = 'password'
       }
     },
 
     checkCapsLock(event) {
-      debugger;
-      const { key } = event;
-      this.captionOn = key && key.length === 1 && key >= "A" && key <= "Z";
-    },
-  },
-};
+      debugger
+      const { key } = event
+      this.captionOn = key && key.length === 1 && key >= 'A' && key <= 'Z'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
