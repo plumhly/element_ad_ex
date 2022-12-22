@@ -1,5 +1,5 @@
 import userLogin from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth.js'
+import { getToken, setToken } from '@/utils/auth.js'
 
 const state = {
   token: getToken()
@@ -33,5 +33,8 @@ const actions = {
 }
 
 export default {
-  actions: {}
+  namespaced: true,
+  state,
+  mutations,
+  actions
 }

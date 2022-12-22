@@ -8,6 +8,9 @@
 import axios from 'axios'
 // import { Message, MessageBox } from 'element-ui'
 
+import store from '@/store'
+import { getToken } from '@/utils/auth'
+
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000
@@ -15,6 +18,10 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
+    if (store.getters.token) {
+      config.headers['X-Token'] = getToken()
+    }
+
     return config
   },
   (error) => {

@@ -7,6 +7,7 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
+import getters from './getters'
 
 const fileLoader = require.context('./moudle', true, /.js$/)
 
@@ -22,6 +23,6 @@ const modules = fileLoader.keys().reduce((preContainer, current) => {
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store(modules)
+const store = new Vuex.Store(modules, getters)
 
 export default store

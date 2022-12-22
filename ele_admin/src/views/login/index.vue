@@ -57,6 +57,7 @@
 
 <script>
 import SocialSign from './components/SocialSign.vue'
+import { validUser } from '@/utils/validate'
 
 export default {
   components: {
@@ -64,7 +65,7 @@ export default {
   },
   data() {
     const usernameChecker = (rule, value, callback) => {
-      if (typeof value === 'undefined' || value === '') {
+      if (!validUser(value)) {
         callback(new Error('please input username'))
       }
 
@@ -133,6 +134,7 @@ export default {
       this.dialogVisible = true
     },
     showPassword() {
+      this.$refs.password.focus()
       this.showPwd = !this.showPwd
       if (this.showPwd) {
         this.passwordType = 'text'
